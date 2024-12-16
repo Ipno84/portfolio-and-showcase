@@ -1,0 +1,14 @@
+---
+import Title from '../components/title/index.astro';
+import Description from '../components/description/index.astro';
+import Cta from '../components/cta/index.astro';
+import MainLayout from '../layouts/main-layout/main-layout.astro';
+---
+
+<MainLayout>
+	<Description>Hey, I'm Marco 👋🏻</Description>
+	<Title prefix="Front" title="end Developer" suffix="."/>
+	<Description>I'm a frontend developer based in Italy, I'll help you build beautiful websites your users will love.</Description>
+	<Cta as="a" color="primary">Get in Touch</Cta>
+	<Cta as="a" variant="outline" hre="/showcase" title="Marco Abate Showcase">Browse Showcases</Cta>
+</MainLayout>
