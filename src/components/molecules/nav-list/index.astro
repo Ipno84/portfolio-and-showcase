@@ -1,0 +1,34 @@
+---
+import ListWrapper from './../../atoms/list/wrapper.astro';
+import ListItem from './../../atoms/list/item.astro';
+import Cta from './../../atoms/cta/index.astro';
+
+const links = [
+    {
+        title: 'Home',
+        href: '/'
+    },
+    {
+        title: 'Showcase',
+        href: '/showcase'
+    },
+    {
+        title: 'About',
+        href: '/about'
+    },
+    {
+        title: 'Contacts',
+        href: '/contacts'
+    }
+]
+
+const currentPath = Astro.url.pathname;
+---
+
+<ListWrapper variant="inline" place="navigation">
+    {links.map(({ title, href }) => (
+        <ListItem variant="inline">
+            <Cta as="a" variant="text" active={currentPath === href} title={title} href={href} size="lg">{title}</Cta>
+        </ListItem>
+    ))}
+</ListWrapper>

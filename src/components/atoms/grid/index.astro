@@ -1,0 +1,46 @@
+---
+const defaultValues = {
+    itemsPerRow: 4,
+    gap: '20px'
+};
+
+const getDefaultValue = (prop: keyof typeof defaultValues) => defaultValues[prop] ?? null;
+
+const properties = Object.keys(defaultValues) as (keyof typeof defaultValues)[];
+
+const cssVars: Record<string, string> = {};
+
+properties.forEach((prop) => {
+    const baseValue = Astro.props[prop] ?? getDefaultValue(prop);
+    const smValue = Astro.props[`${prop}Sm`] ?? baseValue;
+    const lgValue = Astro.props[`${prop}Lg`] ?? smValue;
+
+    cssVars[prop] = baseValue;
+    cssVars[`${prop}Sm`] = smValue;
+    cssVars[`${prop}Lg`] = lgValue;
+});
+
+const cssVarsString = Object.entries(cssVars)
+    .map(([key, value]) => `--${key}: ${value};`)
+    .join(' ');
+---
+
+<div class="grid" style={cssVarsString}>
+    <slot/>
+</div>
+
+<style lang="scss">
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(var(--itemsPerRow), 1fr);
+        gap: var(--gap);
+        @media screen and (min-width: 768px) {
+            grid-template-columns: repeat(var(--itemsPerRowSm), 1fr);
+            gap: var(--gapSm);
+        }
+        @media screen and (min-width: 1280px) {
+            grid-template-columns: repeat(var(--itemsPerRowLg), 1fr);
+            gap: var(--gapLg);
+        }
+    }
+</style>

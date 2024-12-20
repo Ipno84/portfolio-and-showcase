@@ -1,0 +1,46 @@
+---
+const defaultValues = {
+    padding: 0,
+    position: 'static',
+    top: 'auto',
+    right: 'auto',
+    bottom: 'auto',
+    left: 'auto',
+};
+
+const getDefaultValue = (prop: keyof typeof defaultValues) => defaultValues[prop] ?? null;
+
+const properties = Object.keys(defaultValues) as (keyof typeof defaultValues)[];
+
+const cssVars: Record<string, string> = {};
+
+properties.forEach((prop) => {
+    const baseValue = Astro.props[prop] ?? getDefaultValue(prop);
+    const smValue = Astro.props[`${prop}Sm`] ?? baseValue;
+    const lgValue = Astro.props[`${prop}Lg`] ?? smValue;
+
+    cssVars[prop] = baseValue;
+    cssVars[`${prop}Sm`] = smValue;
+    cssVars[`${prop}Lg`] = lgValue;
+});
+
+const cssVarsString = Object.entries(cssVars)
+    .map(([key, value]) => `--${key}: ${value};`)
+    .join(' ');
+---
+
+<div class="block" style={cssVarsString}>
+    <slot/>
+</div>
+
+<style lang="scss">
+    .block {
+        padding: var(--padding);
+        @media screen and (min-width: 768px) {
+            padding: var(--paddingSm);
+        }
+        @media screen and (min-width: 1280px) {
+            padding: var(--paddingLg);
+        }
+    }
+</style>

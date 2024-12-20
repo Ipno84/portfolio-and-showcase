@@ -1,0 +1,21 @@
+---
+import Block from './../../atoms/block/index.astro';
+import Section from './../../atoms/section/index.astro';
+import Cell from './../../atoms/cell/index.astro';
+import Description from './../../atoms/description/index.astro';
+import Highlight from './../../atoms/highlight/index.astro';
+import FreeTitle from './../../molecules/free-title/index.astro';
+---
+
+<Block padding="100px 0 0 0">
+    <Section gap={20} minHeight="50dvh">
+        <Cell vAlign="middle" flex={1}>
+            <FreeTitle as="h1">
+                <Highlight>About</Highlight> Me <Highlight>.</Highlight>
+            </FreeTitle>
+            <Block padding="20px 0 10px 0">
+                <Description>Developing beautiful and functional websites is what I love doing, and that's why I give my all in every new challenge.</Description>
+            </Block>
+        </Cell>
+    </Section>
+</Block>

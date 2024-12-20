@@ -1,0 +1,52 @@
+---
+import Block from './../../components/atoms/block/index.astro'
+import Section from './../../components/atoms/section/index.astro'
+import Cell from './../../components/atoms/cell/index.astro'
+import FreeTitle from './../../components/molecules/free-title/index.astro'
+import Highlight from './../../components/atoms/highlight/index.astro';
+import Paragraph from './../../components/atoms/paragraph/index.astro'
+import Ctas from './../../components/molecules/ctas/index.astro'
+import NavList from './../../components/molecules/nav-list/index.astro'
+import Socials from './../../components/molecules/socials/index.astro'
+---
+
+<footer>
+    <Block padding="20px 0 0 0">
+        <Section gap={20}>
+            <Cell vAlign="bottom" hAlign="center" hAlignLg="left" flex={1}>
+                <NavList />
+            </Cell>
+            <Cell vAlign="bottom" hAlign="center" hAlignLg="right" flex={1}>
+                <Socials />
+            </Cell>
+        </Section>
+    </Block>
+    <Block padding="20px 0 0 0">
+        <Section gap={20}>
+            <Cell vAlign="bottom" hAlign="center" hAlignLg="left" flex={1}>
+                <Block padding="0 0 10px 0">
+                    <FreeTitle as="h6">
+                        Interested in <Highlight>working together?</Highlight>        
+                    </FreeTitle>
+                </Block>
+                <Ctas />
+            </Cell>
+            <Cell vAlign="bottom" hAlign="center" hAlignLg="right" flex={1}>
+                <Block padding="0 0 20px 0">
+                    <Paragraph align="center" alignLg="right">
+                        ©2024 All Rights Reserved.<br/>
+                        Made with 💜 by <Highlight>Marco Abate</Highlight>
+                    </Paragraph>
+                </Block>
+            </Cell>
+        </Section>
+    </Block>
+</footer>
+
+<style lang="scss">
+    footer {
+        max-width: 1340px;
+        padding: 0 20px;
+        margin: 0 auto;
+    }
+</style>

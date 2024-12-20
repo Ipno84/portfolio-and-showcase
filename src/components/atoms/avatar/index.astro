@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+const { src, alt } = Astro.props;
+---
+
+<div class="avatar">
+    <Image src={src} alt={alt} />
+</div>
+
+<style lang="scss">
+    .avatar {
+        border-radius: 50%;
+        overflow: hidden;
+        padding: 30px;
+        border: 1px solid #4e525a;
+        width: max-content;
+        @media screen and (min-width: 1280px) {
+            padding: 50px;
+        }
+        img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            @media screen and (min-width: 1280px) {
+                width: 340px;
+                height: 340px;
+            }
+        }
+    }
+</style>

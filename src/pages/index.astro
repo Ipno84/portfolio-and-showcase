@@ -1,14 +1,16 @@
 ---
-import Title from '../components/title/index.astro';
-import Description from '../components/description/index.astro';
-import Cta from '../components/cta/index.astro';
-import MainLayout from '../layouts/main-layout/main-layout.astro';
+import Layout from '../layouts/layout/index.astro';
+import HomeHero from './../components/templates/home-hero/index.astro'
+import Projects from './../components/templates/projects/index.astro'
+import Skills from './../components/templates/skills/index.astro'
+import Story from './../components/templates/story/index.astro'
+import Experience from './../components/templates/experience/stepper/index.astro'
 ---
 
-<MainLayout>
-	<Description>Hey, I'm Marco 👋🏻</Description>
-	<Title prefix="Front" title="end Developer" suffix="."/>
-	<Description>I'm a frontend developer based in Italy, I'll help you build beautiful websites your users will love.</Description>
-	<Cta as="a" color="primary">Get in Touch</Cta>
-	<Cta as="a" variant="outline" hre="/showcase" title="Marco Abate Showcase">Browse Showcases</Cta>
-</MainLayout>
+<Layout title="Home">
+	<HomeHero />
+	<Projects />
+	<Experience />
+	<Skills />
+	<Story />
+</Layout>

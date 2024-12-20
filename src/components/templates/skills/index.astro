@@ -1,0 +1,56 @@
+---
+import Block from './../../atoms/block/index.astro'
+import FreeTitle from './../../molecules/free-title/index.astro'
+import ListWrapper from './../../atoms/list/wrapper.astro'
+import ListItem from './../../atoms/list/item.astro'
+import Paragraph from './../../atoms/paragraph/index.astro'
+import SectionHead from './../../molecules/section-head/index.astro'
+import Grid from './../../atoms/grid/index.astro'
+
+const items = [
+    {
+        title: 'Web Design',
+        items: ['UI/UX Design', 'Responsive Design', 'Wireframing', 'User Research']
+    },
+    {
+        title: 'FrontEnd',
+        items: ['HTML', 'CSS', 'JavaScript', 'React']
+    },
+    {
+        title: 'BackEnd',
+        items: ['Node.js', 'Express', 'MongoDB', 'SQL']
+    },
+    {
+        title: 'Soft Skills',
+        items: ['Problem Solving', 'Teamwork', 'Communication', 'Time Management']
+    }
+]
+---
+
+<Block padding="50px 0">
+    <SectionHead prefix="My" title=" Skills" />
+    <Block padding="20px 0 0 0">
+        <Grid gap="40px" itemsPerRow={1} itemsPerRowSm={2} itemsPerRowLg={4}>
+            {items.map(({ title, items }) => {
+                return (
+                    <Block padding="0 0 40px 0">
+                        <Block padding="0 0 10px 0">
+                            <FreeTitle as="h6">{title}</FreeTitle>
+                        </Block>
+                        <ListWrapper variant="unstyled">
+                            {items.map((item) => {
+                                return (
+                                    <ListItem>
+                                        <Block padding="3px 0">
+                                            <Paragraph>{item}</Paragraph>
+                                        </Block>
+                                    </ListItem>
+                                )
+                            })}
+                        </ListWrapper>
+                    </Block>
+                )
+            })}
+        </Grid>
+    </Block>
+</Block>

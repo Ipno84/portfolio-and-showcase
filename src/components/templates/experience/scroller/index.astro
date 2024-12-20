@@ -1,0 +1,110 @@
+---
+import steps from "./../state";
+import Block from "./../../../atoms/block/index.astro";
+import Highlight from "./../../../atoms/highlight/index.astro";
+import SectionHead from "./../../../molecules/section-head/index.astro";
+---
+
+<Block padding="100px 0 0 0">
+  <SectionHead prefix="My" title=" Experience" />
+  <div class="experience">
+    <div class="experience__indicator"></div>
+    {
+      steps.map(({ role, company, start, end, paragraphs }, index) => {
+        const fixedIndex = index + 1;
+        const normalizedIndex = String(
+          fixedIndex < 10 ? `0${fixedIndex}` : fixedIndex
+        );
+        return (
+          <div class="experience__item">
+            <div class="experience__index">
+              <span class="experience__index__item">{normalizedIndex}</span>
+              <span class="experience__index__date">
+                {start} - <Highlight>{end}</Highlight>
+              </span>
+            </div>
+            <div class="experience__content">
+              <h6 class="experience__content__subtitle">{role}</h6>
+              <h5 class="experience__content__title">{company}</h5>
+              {paragraphs.map((paragraph) => (
+                <p class="experience__content__description">{paragraph}</p>
+              ))}
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</Block>
+
+<style lang="scss">
+  .experience {
+    padding-top: 40px;
+    overflow: hidden;
+    position: relative;
+    &__indicator {
+      width: 3px;
+      background-color: #6e06f2;
+      position: absolute;
+      top: 40px;
+      bottom: 0;
+      left: 3px;
+    }
+    &__item {
+      display: flex;
+      gap: 40px;
+      padding-bottom: 50px;
+    }
+    &__index {
+      width: 240px;
+      padding-left: 40px;
+      &__item {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        letter-spacing: -0.03rem;
+        color: #24262f;
+        font-weight: 700;
+        font-size: 4rem;
+        line-height: 4rem;
+        text-align: center;
+        display: block;
+      }
+      &__date {
+        font-family: "Poppins", sans-serif;
+        letter-spacing: -0.03rem;
+        color: #24262f;
+        font-weight: 400;
+        font-size: 0.875rem;
+        line-height: 0.875rem;
+        text-align: center;
+        display: block;
+      }
+    }
+    &__content {
+      flex: 1;
+      &__subtitle {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        letter-spacing: -0.03rem;
+        color: #6e06f2;
+        font-size: 1rem;
+      }
+      &__title {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        letter-spacing: -0.03rem;
+        color: #24262f;
+        font-size: 2rem;
+      }
+      &__description {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        letter-spacing: -0.03rem;
+        color: #24262f;
+        font-size: 1.25rem;
+      }
+    }
+  }
+</style>

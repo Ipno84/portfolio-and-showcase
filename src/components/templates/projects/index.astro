@@ -1,0 +1,148 @@
+---
+import Block from "./../../atoms/block/index.astro";
+import SectionHead from "./../../molecules/section-head/index.astro";
+import Cell from "./../../atoms/cell/index.astro";
+import Grid from "./../../atoms/grid/index.astro";
+import Card from "./../../molecules/card/index.astro";
+import goal from "./../../../assets/images/goal.png";
+import swipeTo from "./../../../assets/images/swipe-to.png";
+import reactLang from "./../../../assets/images/react-lang.png";
+import reactReduxLocalization from "./../../../assets/images/react-redux-localization.png";
+import redis from "./../../../assets/images/redis.png";
+import lyricsReader from "./../../../assets/images/lyrics-reader.png";
+
+const projects = [
+  {
+    title: "Goal",
+    description:
+      "Archive used for cataloging, storage and management of professional profiles. Created on the basis of a social project to help unemployed young people chart their career paths.",
+    src: goal.src,
+    flex: 1,
+    hoverFlex: 2,
+    link: "https://github.com/Ipno84/goal",
+    tags: [
+      "React",
+      "Redux",
+      "PHP",
+      "Wordpress",
+      "Custom Post Type",
+      "Custom Taxonomy",
+      "Custom Fields",
+      "Custom Rest API",
+      "Custom Plugin",
+      "Custom Theme",
+    ],
+  },
+  {
+    title: "SwipeTo",
+    description:
+      "It is an old work, very very old, but I am fond of it. It implements, with jQuery (so very old) the “swipe to delete” functionality that, about 10 years ago, was implemented on old iPhones.",
+    src: swipeTo.src,
+    flex: 1,
+    hoverFlex: 2,
+    link: "https://github.com/Ipno84/swipeTo",
+    tags: ["jQuery", "Javascript"],
+  },
+  {
+    title: "React Lang",
+    description:
+      "Library to manage translations for React. Written in Typescript, it implements the Context API to make the functionality not directly dependent on a specific state manager.",
+    src: reactLang.src,
+    flex: 1,
+    hoverFlex: 2,
+    link: "https://github.com/Ipno84/react-lang",
+    tags: ["React", "Typescript", "Context API", "Localize", "i18n"],
+  },
+  {
+    title: "React Redux Localization",
+    description:
+      "Library similar to React Lang, but written in VanillaJS. The goal of this library is to integrate seamlessly into a React/Redux context by exposing states, actions, and reducers. It also exposes a component that allows you to get in an optimized way translation strings.",
+    src: reactReduxLocalization.src,
+    flex: 1,
+    hoverFlex: 2,
+    link: "https://github.com/Ipno84/react-redux-localization",
+    tags: ["React", "Redux", "Localize", "i18n"],
+  },
+  {
+    title: "Lyrics Reader",
+    description:
+      "Well... yes, I'm a singer and I needed an app to read the song lyrics during concerts... I have the memory of a hamster for lyrics... The apps in the stores were not for me, so I decided to make one from scratch designed on my needs.",
+    src: lyricsReader.src,
+    flex: 1,
+    hoverFlex: 2,
+    link: "https://github.com/Ipno84/lyrics-reader",
+    tags: [
+      "React Native",
+      "Typescript",
+      "Redux",
+      "Firebase",
+      "Expo",
+      "EmotionJS",
+    ],
+  },
+  {
+    title: "Redis Desktop",
+    description:
+      "In my old company it was necessary to find a way to display and manage data on Redis clients. So I implemented an app to make life easier for Backend developers by allowing them to fetch, search, delete, or insert new data through a simple GUI.",
+    src: redis.src,
+    flex: 1,
+    hoverFlex: 2,
+    link: "https://github.com/Ipno84/RedisDesktop",
+    tags: [
+      "React",
+      "Redux",
+      "Redis",
+      "Styled Components",
+      "Electron",
+      "List Virtualization",
+    ],
+  },
+  {
+    title: "Cinereo",
+    description:
+      "A few years ago I received an assignment from CNR, Italy's most important research center. I was asked to create software that would give users the ability to manage documents related to requests and permissions. I was in charge of the backend and frontend, I implemented a library that, based on a specific JSON schema, allows to render a set of mapped React components. The “Low Code” concept applied to document management.",
+    src: "https://placehold.co/600x400/000000/FFF",
+    flex: 1,
+    hoverFlex: 2,
+    link: "https://github.com/gaussianoLe/cinereo",
+    tags: [
+      "React",
+      "Redux",
+      "ExpressJS",
+      "Electron",
+      "Typescript",
+      "MongoDB",
+      "JWT",
+      "Docker",
+    ],
+    hide: true,
+  },
+].filter(({ hide }) => !hide);
+---
+
+<Block padding="50px 0">
+  <SectionHead
+    prefix="My"
+    title=" Projects"
+    description="Here's a list of projects created sometimes for fun, sometimes for study or out of necessity in support of other projects."
+  />
+  <Grid gap="40px" itemsPerRow={1} itemsPerRowSm={2} itemsPerRowLg={3}>
+    {
+      projects.map(
+        ({ src, title, description, flex, hoverFlex, link, tags }) => {
+          return (
+            <Cell flex={flex} hoverFlex={hoverFlex}>
+              <Card
+                src={src}
+                title={title}
+                description={description}
+                link={link}
+                tags={tags}
+              />
+            </Cell>
+          );
+        }
+      )
+    }
+  </Grid>
+</Block>

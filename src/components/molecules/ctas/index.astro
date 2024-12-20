@@ -1,0 +1,14 @@
+---
+import Cta from './../../atoms/cta/index.astro';
+import ListWrapper from './../../atoms/list/wrapper.astro';
+import ListItem from './../../atoms/list/item.astro';
+---
+
+<ListWrapper variant="inline">
+    <ListItem variant="inline">
+        <Cta as="a" color="primary" href="/contacts" title="Contacts">Get in Touch</Cta>
+    </ListItem>
+    <ListItem variant="inline">
+        <Cta as="a" variant="outline" href="/showcase" title="Showcase">Browse Showcase</Cta>
+    </ListItem>
+</ListWrapper>

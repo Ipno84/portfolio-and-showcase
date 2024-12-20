@@ -1,0 +1,102 @@
+.stepper {
+  &__list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: block;
+    @media screen and (min-width: 768px) {
+      display: flex;
+    }
+    @media screen and (min-width: 1280px) {
+      display: block;
+    }
+    &_item {
+      display: block;
+      text-align: left;
+      @media screen and (min-width: 768px) {
+        display: inline-block;
+        flex: 1;
+        text-align: center;
+      }
+      @media screen and (min-width: 1280px) {
+        display: block;
+        text-align: left;
+      }
+      a {
+        font-size: 1.375rem;
+        font-weight: 500;
+        text-decoration: none;
+        color: #24262f;
+        transition: color 0.3s ease;
+        padding: 10px 0;
+        display: inline-block;
+        &:hover {
+          color: #a168e8;
+        }
+      }
+      &.stepper__list_item--active {
+        a {
+          color: #a168e8;
+        }
+      }
+    }
+    &_container {
+      position: relative;
+      padding: 0 0 0 40px;
+      @media screen and (min-width: 768px) {
+        padding: 0 0 15px 0;
+      }
+      @media screen and (min-width: 1280px) {
+        padding: 0 0 0 40px;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        width: 3px;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        height: initial;
+        background-color: #24262f;
+        @media screen and (min-width: 768px) {
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 3px;
+          width: 100%;
+          top: initial;
+        }
+        @media screen and (min-width: 1280px) {
+          height: initial;
+          width: 3px;
+          right: initial;
+          top: 0;
+        }
+      }
+    }
+  }
+  &__indicator {
+    position: absolute;
+    background-color: #a168e8;
+    width: 5px;
+    height: var(--itemSize);
+    left: -1px;
+    bottom: initial;
+    transition: transform 0.3s ease;
+    transform: translateY(var(--itemStep));
+    @media screen and (min-width: 768px) {
+      bottom: -1px;
+      width: var(--itemSize);
+      height: 5px;
+      transform: translateX(var(--itemStep));
+    }
+    @media screen and (min-width: 1280px) {
+      left: -1px;
+      bottom: initial;
+      width: 5px;
+      height: var(--itemSize);
+      transform: translateY(var(--itemStep));
+    }
+  }
+}

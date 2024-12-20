@@ -1,0 +1,15 @@
+---
+import FreeTitle from '../../molecules/free-title/index.astro';
+import Highlight from '../../atoms/highlight/index.astro';
+import Block from '../../atoms/block/index.astro';
+import Paragraph from '../../atoms/paragraph/index.astro';
+
+const { prefix, title, description } = Astro.props;
+---
+
+<Block padding="0 0 20px 0">
+    <FreeTitle as="h3">
+        <Highlight>{prefix}</Highlight>{title}<Highlight>.</Highlight>
+    </FreeTitle>
+    {description && <Block padding="20px 0 0 0"><Paragraph>{description}</Paragraph></Block>}
+</Block>

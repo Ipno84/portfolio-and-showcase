@@ -1,0 +1,52 @@
+---
+const { href, title, label } = Astro.props
+---
+
+<a class="contact__link" href={href} title={title}>
+    <span><slot /></span>{label}
+</a>
+
+<style lang="scss" is:global>
+    .contact__link {
+        color: #24262f;
+        font-family: "Poppins", sans-serif;
+        font-size: 1.125rem;
+        line-height: 1.35rem;
+        font-weight: 400;
+        text-decoration: none;
+        padding: 20px 0 20px 70px;
+        display: inline-block;
+        position: relative;
+        span {
+            width: 45px;
+            height: 45px;
+            border: 1px solid #24262f;
+            outline-width: 2px;
+            outline-style: solid;
+            outline-color: transparent;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: outline-color 0.3s ease;
+            svg {
+                width: 25px;
+                height: 25px;
+                fill: #24262f;
+            }
+        }
+        &:hover {
+            color: #6e06f2;
+            span {
+                outline-color: #6e06f2;
+                svg {
+                    fill: #6e06f2;
+                }
+            }
+        }
+    }
+</style>

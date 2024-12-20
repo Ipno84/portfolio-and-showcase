@@ -1,0 +1,45 @@
+---
+const defaultValues = {
+    align: 'left',
+};
+
+const getDefaultValue = (prop: keyof typeof defaultValues) => defaultValues[prop] ?? null;
+
+const properties = Object.keys(defaultValues) as (keyof typeof defaultValues)[];
+
+const cssVars: Record<string, string> = {};
+
+properties.forEach((prop) => {
+    const baseValue = Astro.props[prop] ?? getDefaultValue(prop);
+    const smValue = Astro.props[`${prop}Sm`] ?? baseValue;
+    const lgValue = Astro.props[`${prop}Lg`] ?? smValue;
+
+    cssVars[prop] = baseValue;
+    cssVars[`${prop}Sm`] = smValue;
+    cssVars[`${prop}Lg`] = lgValue;
+});
+
+const cssVarsString = Object.entries(cssVars)
+    .map(([key, value]) => `--${key}: ${value};`)
+    .join(' ');
+---
+
+<p class="paragraph" style={cssVarsString}><slot/></p>
+
+<style lang="scss">
+    .paragraph {
+        margin: 0;
+        color: #4e525a;
+        font-family: "Poppins", sans-serif;
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+        font-weight: 400;
+        text-align: var(--align);
+        @media screen and (min-width: 768px) {
+            text-align: var(--alignSm);
+        }
+        @media screen and (min-width: 1280px) {
+            text-align: var(--alignLg);
+        }
+    }
+</style>

@@ -1,0 +1,106 @@
+---
+import FreeTitle from "./../../molecules/free-title/index.astro";
+import Paragraph from "./../../atoms/paragraph/index.astro";
+import Block from "./../../atoms/block/index.astro";
+import Pills from "./../../molecules/pills/index.astro";
+import linkoutSvg from "../../../assets/images/linkout.svg?raw";
+
+const { title, description, src, link, tags } = Astro.props;
+---
+
+<a href={link} class="card" title={title} target="_blank">
+  <div class="card__image">
+    <div class="card__image_container">
+      <img src={src} alt={title} />
+    </div>
+    <Pills tags={tags} />
+  </div>
+  <Block padding="30px 0 0 0">
+    <Block padding="0 0 24px 0">
+      <FreeTitle as="h6"
+        >{title}
+        <div class="icon__container">
+          <Fragment class="linkout__icon" set:html={linkoutSvg} />
+        </div></FreeTitle
+      >
+    </Block>
+    <Paragraph>{description}</Paragraph>
+  </Block>
+</a>
+
+<style lang="scss" is:global>
+  .grid {
+    &:hover {
+      .card:not(:hover) {
+        opacity: 0.4;
+      }
+    }
+  }
+  .card {
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    &:hover {
+      opacity: 1;
+      .icon__container {
+        background-color: #6e06f2;
+        .linkout__icon {
+          stroke: #ffffff;
+        }
+      }
+      .card__image {
+        .card__image_container {
+            img {
+              transform: translateX(-50%) translateY(-50%) scale(2.3) rotate(10deg);
+            }
+        }
+      }
+    }
+    .icon__container {
+      border-width: 2px;
+      border-style: solid;
+      border-color: #6e06f2;
+      background-color: transparent;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      position: relative;
+      left: 10px;
+      top: 1px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+      .linkout__icon {
+        stroke: #6e06f2;
+        transition: stroke 0.3s ease;
+      }
+    }
+    .card__image {
+      width: 100%;
+      height: 340px;
+      border-radius: 20px;
+      background-color: #999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 40px 80px 40px;
+      position: relative;
+      overflow: hidden;
+      .card__image_container {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          border-radius: 20px;
+          max-width: 100%;
+          max-height: 100%;
+          transition: transform 0.3s ease;
+        }
+      }
+    }
+  }
+</style>

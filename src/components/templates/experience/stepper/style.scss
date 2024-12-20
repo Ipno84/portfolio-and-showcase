@@ -1,0 +1,15 @@
+.stepper__container {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  @media screen and (min-width: 1280px) {
+    flex-direction: row;
+  }
+  &_left {
+    flex: 1;
+  }
+  &_right {
+    flex: 4;
+  }
+}

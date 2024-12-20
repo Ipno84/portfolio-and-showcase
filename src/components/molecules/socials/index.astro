@@ -1,0 +1,37 @@
+---
+import linkedin from '../../../assets/images/linkedin.svg?raw';
+import github from '../../../assets/images/github.svg?raw';
+import ListWrapper from './../../atoms/list/wrapper.astro'
+import ListItem from './../../atoms/list/item.astro'
+---
+
+<div class="socials">
+    <ListWrapper variant="inline">
+        <ListItem variant="inline">
+            <a href="https://www.linkedin.com/in/marco-abate-64ab2b124/" target="_blank" title="Linkedin">
+                <Fragment class="social__icon" set:html={linkedin} />
+            </a>
+        </ListItem>
+        <ListItem variant="inline">
+            <a href="https://github.com/Ipno84" target="_blank" title="Github">
+                <Fragment class="social__icon" set:html={github} />
+            </a>
+        </ListItem>
+    </ListWrapper>
+</div>
+
+<style lang="scss" is:global>
+    .socials {
+        a {
+            .social__icon {
+                stroke: #24262f;
+                transition: stroke 0.3s ease;
+            }
+            &:hover {
+                .social__icon {
+                    stroke: #6e06f2;
+                }
+            }
+        }
+    }
+</style>

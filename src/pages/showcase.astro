@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/layout/index.astro';
+import ShowcaseHero from './../components/templates/showcase-hero/index.astro'
+import HeroCard from './../components/molecules/hero-card/index.astro'
+
+const items = [
+	{
+		src: 'https://placehold.co/1280x720/000000/FFF',
+		title: 'Semantic HTML',
+		subtitle: 'MovieApp',
+		description: 'Web app that allows users to view information about movies, search for them using a search engine, and view details about each movie. It integrates TMDb\'s public API for content management.',
+	},
+	{
+		src: 'https://placehold.co/1280x720/000000/FFF',
+		title: 'CSS and custom UI crafting',
+		subtitle: 'Dashboard',
+		description: '',
+	},
+	{
+		src: 'https://placehold.co/1280x720/000000/FFF',
+		title: 'Design & QA',
+		subtitle: 'Landing Page',
+		description: '',
+	},
+	{
+		src: 'https://placehold.co/1280x720/000000/FFF',
+		title: 'VanillaJS',
+		subtitle: 'ToDo App',
+		description: '',
+	},
+	{
+		src: 'https://placehold.co/1280x720/000000/FFF',
+		title: 'React',
+		subtitle: 'Weather App',
+		description: '',
+	},
+	{
+		src: 'https://placehold.co/1280x720/000000/FFF',
+		title: 'Wordpress/PHP',
+		subtitle: 'Headless Wordpress with custom post types and taxonomies',
+		description: '',
+	},
+	{
+		src: 'https://placehold.co/1280x720/000000/FFF',
+		title: 'Gutenberg/Wordpress',
+		subtitle: 'Testimonial Slider block',
+		description: '',
+	},
+	{
+		src: 'https://placehold.co/1280x720/000000/FFF',
+		title: 'Accessibility',
+		subtitle: 'Accessible Quiz App',
+		description: '',
+	}
+]
+---
+
+<Layout title="Showcase">
+	<ShowcaseHero />
+	{items.map(({src, title, subtitle, description}) => {
+		return (
+			<HeroCard
+				src={src}
+				title={title}
+				subtitle={subtitle}
+				description={description}
+			/>
+		)
+	})}
+</Layout>

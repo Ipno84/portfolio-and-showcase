@@ -1,0 +1,25 @@
+---
+import NavList from './../../molecules/nav-list/index.astro';
+---
+
+<header>
+    <nav class="nav">
+        <NavList />
+    </nav>
+</header>
+
+<style lang="scss">
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        backdrop-filter: blur(10px);
+        z-index: 1;
+    }
+    .nav {
+        padding: 12px 0;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+</style>

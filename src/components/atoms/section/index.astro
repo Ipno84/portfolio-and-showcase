@@ -1,0 +1,18 @@
+---
+const { gap, minHeight } = Astro.props
+---
+
+<section style={`--gap: ${gap}px; --minHeight: ${minHeight}`}><slot/></section>
+
+<style lang="scss">
+    section {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap);
+        min-height: var(--minHeight);
+        @media screen and (min-width: 992px) {
+            flex-direction: row;
+            
+        }
+    }
+</style>

@@ -1,0 +1,106 @@
+---
+const { hAlign, hAlignLg, vAlign, vAlignLg, flex } = Astro.props;
+let className = ['cell'];
+
+hAlign && className.push(`cell--h-${hAlign}`);
+hAlignLg && className.push(`cell--h-${hAlignLg}-lg`);
+vAlign && className.push(`cell--v-${vAlign}`);
+vAlignLg && className.push(`cell--v-${vAlignLg}-lg`);
+
+const cssClass = className.join(' ');
+---
+
+<div class={cssClass} style={`--flex: ${flex};`}><slot/></div>
+
+<style lang="scss" is:global>
+    .cell {
+        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        flex: var(--flex, 1);
+        &.cell--v-middle {
+            justify-content: center;
+            @media screen and (min-width: 1280px) {
+                &.cell--v-middle-lg {
+                    justify-content: center;
+                }
+                &.cell--v-top-lg {
+                    justify-content: flex-start;
+                }
+                &.cell--v-bottom-lg {
+                    justify-content: flex-end;
+                }
+            }
+        }
+        &.cell--h-center {
+            align-items: center;
+            @media screen and (min-width: 1280px) {
+                &.cell--h-center-lg {
+                    align-items: center;
+                }
+                &.cell--h-left-lg {
+                    align-items: flex-start;
+                }
+                &.cell--h-right-lg {
+                    align-items: flex-end;
+                }
+            }
+        }
+        &.cell--v-top {
+            justify-content: flex-start;
+            @media screen and (min-width: 1280px) {
+                &.cell--v-middle-lg {
+                    justify-content: center;
+                }
+                &.cell--v-top-lg {
+                    justify-content: flex-start;
+                }
+                &.cell--v-bottom-lg {
+                    justify-content: flex-end;
+                }
+            }
+        }
+        &.cell--h-left {
+            align-items: flex-start;
+            @media screen and (min-width: 1280px) {
+                &.cell--h-center-lg {
+                    align-items: center;
+                }
+                &.cell--h-left-lg {
+                    align-items: flex-start;
+                }
+                &.cell--h-right-lg {
+                    align-items: flex-end;
+                }
+            }
+        }
+        &.cell--v-bottom {
+            justify-content: flex-end;
+            @media screen and (min-width: 1280px) {
+                &.cell--v-middle-lg {
+                    justify-content: center;
+                }
+                &.cell--v-top-lg {
+                    justify-content: flex-start;
+                }
+                &.cell--v-bottom-lg {
+                    justify-content: flex-end;
+                }
+            }
+        }
+        &.cell--h-right {
+            align-items: flex-end;
+            @media screen and (min-width: 1280px) {
+                &.cell--h-center-lg {
+                    align-items: center;
+                }
+                &.cell--h-left-lg {
+                    align-items: flex-start;
+                }
+                &.cell--h-right-lg {
+                    align-items: flex-end;
+                }
+            }
+        }
+    }
+</style>

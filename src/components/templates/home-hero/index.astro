@@ -1,0 +1,29 @@
+---
+import Block from './../../atoms/block/index.astro';
+import Section from './../../atoms/section/index.astro';
+import Highlight from './../../atoms/highlight/index.astro';
+import Cell from './../../atoms/cell/index.astro';
+import Description from './../../atoms/description/index.astro';
+import FreeTitle from './../../molecules/free-title/index.astro';
+import Ctas from './../../molecules/ctas/index.astro';
+import Avatar from './../../atoms/avatar/index.astro';
+import avatarImg from './../../../assets/images/avatar.jpeg';
+---
+
+<Block padding="100px 0 0 0">
+    <Section gap={20} minHeight="75dvh">
+        <Cell vAlign="middle" flex={1}>
+            <Description>Hey, I'm Marco 👋🏻</Description>
+            <FreeTitle as="h1">
+                <Highlight>Frontend</Highlight>Developer<Highlight>.</Highlight>
+            </FreeTitle>
+            <Block padding="20px 0 10px 0">
+                <Description>I'm a frontend developer based in Italy, I'll help you build beautiful websites your users will love.</Description>
+            </Block>
+            <Ctas />
+        </Cell>
+        <Cell vAlign="middle" hAlign="center" hAlignLg="right" flex={1}>
+            <Avatar alt="Marco Abate" src={avatarImg}/>
+        </Cell>
+    </Section>
+</Block>

@@ -1,0 +1,12 @@
+---
+import Block from './../../../atoms/block/index.astro'
+import SectionHead from './../../../molecules/section-head/index.astro'
+import Stepper from './index.tsx'
+---
+
+<Block padding="50px 0">
+    <SectionHead prefix="My" title=" Experience" />
+    <Block padding="20px 0 0 0">
+        <Stepper client:load />
+    </Block>
+</Block>

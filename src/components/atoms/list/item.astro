@@ -1,0 +1,22 @@
+---
+const { variant } = Astro.props;
+
+let className = ['list__item']
+
+if (variant) className.push(`list__item--${variant}`)
+
+const cssClass = className.join(' ')
+---
+
+<li class={cssClass}><slot /></li>
+
+<style lang="scss">
+    .list__item {
+        &.list__item--inline {
+            display: inline-block;
+            &:not(:first-child) {
+                margin-left: 16px;
+            }
+        }
+    }
+</style>

@@ -1,0 +1,29 @@
+---
+const { variant, place } = Astro.props;
+
+let className = ['list']
+
+if (variant) className.push(`list--${variant}`)
+if (place) className.push(`list--${place}`)
+
+const cssClass = className.join(' ')
+---
+
+<ul class={cssClass}><slot /></ul>
+
+<style lang="scss">
+    .list {
+        &.list--navigation {
+            margin: 0;
+            display: inline-block;
+        }
+        &.list--inline {
+            list-style: none;
+            padding-left: 0;
+        }
+        &.list--unstyled {
+            list-style: none;
+            padding-left: 0;
+        }
+    }
+</style>

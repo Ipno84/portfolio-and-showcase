@@ -1,0 +1,45 @@
+---
+import Block from './../../atoms/block/index.astro';
+import Section from './../../atoms/section/index.astro';
+import ContactLink from './../../molecules/contact-link/index.astro';
+import Cell from './../../atoms/cell/index.astro';
+import Description from './../../atoms/description/index.astro';
+import Highlight from './../../atoms/highlight/index.astro';
+import FreeTitle from './../../molecules/free-title/index.astro';
+import ListWrapper from './../../atoms/list/wrapper.astro';
+import ListItem from './../../atoms/list/item.astro';
+import Avatar from './../../atoms/avatar/index.astro';
+import avatarImg from './../../../assets/images/avatar.jpeg';
+import emailSvg from './../../../assets/images/email.svg?raw';
+import phoneSvg from './../../../assets/images/phone.svg?raw';
+import { Image } from 'astro:assets';
+---
+
+<Block padding="100px 0 0 0" paddingLg="0 0 0 0">
+    <Section gap={20} minHeight="100dvh">
+        <Cell vAlign="middle" flex={1}>
+            <Description>👋🏻 I hope to hear from you soon!</Description>
+            <FreeTitle as="h1" prefix="Frontend" title="Developer" suffix=".">
+                Get <Highlight>In Touch</Highlight>
+            </FreeTitle>
+            <Block padding="20px 0 10px 0">
+                <Description>Looking to partner or work together? Reach out through the form and I'll get back to you in the next 48 hours.</Description>
+            </Block>
+            <ListWrapper variant="unstyled">
+                <ListItem>
+                    <ContactLink href="mailto:info@leadfrontenddev.com" title="Send me an email" label="info@leadfrontenddev.com">
+                        <Fragment class="contact__icon" set:html={emailSvg} />
+                    </ContactLink>
+                </ListItem>
+                <ListItem>
+                    <ContactLink href="tel:+39 320 14 74 864" title="Please, call me!" label="+39 320 14 74 864">
+                        <Fragment class="contact__icon" set:html={phoneSvg} />
+                    </ContactLink>
+                </ListItem>
+            </ListWrapper>
+        </Cell>
+        <Cell vAlign="middle" hAlign="center" hAlignLg="right" flex={1}>
+            <Avatar alt="Marco Abate" src={avatarImg}/>
+        </Cell>
+    </Section>
+</Block>
